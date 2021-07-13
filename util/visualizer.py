@@ -137,7 +137,6 @@ class Visualizer:
 
         saved_path = os.path.join(image_paths, image_path)
         im_ = misc.imread(saved_path)
-        n_ch = im_.shape[1] / im_.shape[0]
         target_size = im_.shape[0]
         for obs in observed:
             im_[:, target_size * obs : (obs + 1) * target_size, :] = 255
@@ -155,22 +154,18 @@ class Visualizer:
             )
 
     def save_video(self, video_path):
-        outputdata = []
         os.system("mkdir ~/tmp_ffmpeg")
         os.system("mkdir ~/tmp_ffmpeg/fake_B")
         os.system("mkdir ~/tmp_ffmpeg/real_A")
         os.system("rm ~/tmp_ffmpeg/*")
-        video = None
         inpout = ["fake_B", "real_A"]
         for end_ in inpout:
             i = 1
             for img_dir in self.video_dir:
                 imgs = sorted(os.listdir(img_dir))
-                num_imgs = len(imgs) / 3
                 for im in imgs:
                     if im.endswith("_%s.png" % end_):
                         img = misc.imread(img_dir + "/" + im)
-                        im_size = img.shape[0]
                         epoch = im.split("_")[0]
                         print(epoch, i)
                         # shutil.copyfile(os.path.join(img_dir,im),"~/tmp_ffmpeg/im%04d.png"%i)

@@ -104,7 +104,7 @@ def define_G_3d(
     )
 
     if len(gpu_ids) > 0:
-        netG_3d.cuda(device_id=gpu_ids[0])
+        netG_3d.cuda()
 
     netG_3d.apply(weights_init)
     return netG_3d
@@ -174,7 +174,7 @@ def define_G(
         print("Generator model name [%s] is not recognized" % which_model_netG)
 
     if len(gpu_ids) > 0:
-        netG.cuda(device_id=gpu_ids[0])
+        netG.cuda()
 
     netG.apply(weights_init)
     return netG
@@ -244,7 +244,7 @@ def define_Enc(
         print("encoder model name [%s] is not recognized" % which_model_netG)
 
     if len(gpu_ids) > 0:
-        netG.cuda(device_id=gpu_ids[0])
+        netG.cuda()
 
     netG.apply(weights_init)
     return netG
@@ -314,7 +314,7 @@ def define_Dec(
         print("Decoder model name [%s] is not recognized" % which_model_netG)
 
     if len(gpu_ids) > 0:
-        netG.cuda(device_id=gpu_ids[0])
+        netG.cuda()
 
     netG.apply(weights_init)
     return netG
@@ -360,7 +360,7 @@ def define_D(
     else:
         print("Discriminator model name [%s] is not recognized" % which_model_netD)
     if use_gpu:
-        netD.cuda(device_id=gpu_ids[0])
+        netD.cuda()
     netD.apply(weights_init)
     return netD
 
@@ -376,7 +376,7 @@ def define_preNet(
         preNet = InputTransformation(input_nc, nif, norm_layer, gpu_ids)
         if use_gpu:
             assert torch.cuda.is_available()
-            preNet.cuda(device_id=gpu_ids[0])
+            preNet.cuda()
         preNet.apply(weights_init)
     return preNet
 
