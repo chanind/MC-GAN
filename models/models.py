@@ -4,14 +4,17 @@
 # By Samaneh Azadi
 ################################################################################
 
+
 def create_model(opt):
     model = None
     print(opt.model)
-    if opt.model == 'cGAN':
+    if opt.model == "cGAN":
         from .cGAN_model import cGANModel
+
         model = cGANModel()
-    elif opt.model == 'StackGAN':
+    elif opt.model == "StackGAN":
         from .StackGAN_model import StackGANModel
+
         model = StackGANModel()
     else:
         raise ValueError("Model [%s] not recognized." % opt.model)
