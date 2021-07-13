@@ -13,12 +13,7 @@ import torchvision.transforms as transforms
 from builtins import object
 import os
 import numpy as np
-from torch import LongTensor, index_select
-from scipy import misc
-import util.util as util
-from PIL import Image
-from torch.nn import UpsamplingBilinear2d
-from torch.autograd import Variable
+from torch import LongTensor
 import warnings
 import pickle
 

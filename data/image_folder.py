@@ -4,15 +4,12 @@
 # By Samaneh Azadi
 ################################################################################
 
-from torch import transpose
 import torch.utils.data as data
 from torch import index_select,LongTensor
 from PIL import Image
 import os
 import os.path
 import numpy as np
-from scipy import misc
-import random
 from options.train_options import TrainOptions
 import torch
 
@@ -92,9 +89,9 @@ class ImageFolder(data.Dataset):
         path = self.imgs[index]
         img = self.loader(path)
         if self.transform is not None:
-			img = self.transform(img)
-			if (self.font_trans):
-				img = font_transform(img,path, self.rgb)
+            img = self.transform(img)
+            if (self.font_trans):
+                img = font_transform(img,path, self.rgb)
         if self.return_paths:
             return img, path
         else:
