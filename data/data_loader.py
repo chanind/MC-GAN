@@ -164,7 +164,7 @@ class Data(object):
             # randomly remove some of the glyphs in input
             if not self.dict:
                 blank_ind = np.repeat(
-                    np.random.permutation(A.size(1) / n_rgb)[
+                    np.random.permutation(int(A.size(1) / n_rgb))[
                         0 : int(self.blanks * A.size(1) / n_rgb)
                     ],
                     n_rgb,
