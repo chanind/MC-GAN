@@ -37,8 +37,8 @@ class Visualizer:
         fake_B = visuals["fake_B"].copy()
         real_B = visuals["real_B"].copy()
         ssim_score = ssim(fake_B, real_B, data_range=real_B.max() - real_B.min())
-        fake_B /= real_B.max()
-        real_B /= real_B.max()
+        fake_B = fake_B / real_B.max()
+        real_B = real_B / real_B.max()
         mse_score = np.mean((fake_B - real_B) ** 2)
         return ssim_score, mse_score
 
