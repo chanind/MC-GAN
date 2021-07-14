@@ -97,7 +97,7 @@ class FlatData(object):
                     0 : int(self.blanks * A.size(3) / target_size)
                 ]
             else:
-                file_name = map(lambda x: x.split("/")[-1], AB_paths)
+                file_name = list(map(lambda x: x.split("/")[-1], AB_paths))
                 blank_ind = self.random_dict[file_name][
                     0 : int(self.blanks * A.size(3) / target_size)
                 ]
@@ -170,7 +170,7 @@ class Data(object):
                     n_rgb,
                 )
             else:
-                file_name = map(lambda x: x.split("/")[-1], AB_paths)
+                file_name = list(map(lambda x: x.split("/")[-1], AB_paths))
                 if len(file_name) > 1:
                     raise Exception("batch size should be 1")
                 file_name = file_name[0]
