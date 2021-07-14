@@ -18,6 +18,16 @@ import warnings
 import pickle
 
 
+# from https://www.programmersought.com/article/1198447176/
+class StrToBytes:
+    def __init__(self, fileobj):
+        self.fileobj = fileobj
+    def read(self, size):
+        return self.fileobj.read(size).encode()
+    def readline(self, size=-1):
+        return self.fileobj.readline(size).encode()
+
+
 def normalize_stack(input, val=0.5):
     # normalize an tensor with arbitrary number of channels:
     # each channel with mean=std=val
@@ -550,8 +560,9 @@ class DataLoader(BaseDataLoader):
         dict_inds = {}
         test_dict = opt.dataroot + "/test_dict/dict.pkl"
         if opt.phase == "test":
-            if os.path.isfile(test_dict):
-                dict_inds = pickle.load(open(test_dict))
+            if os.path.isfile(test_dict, 'r'):
+                with open(test_dict) as f:
+                    dict_inds = pickle.load(StrToBytes(f))
             else:
                 warnings.warn(
                     "Blanks in test data are random. create a pkl file in ~/data_path/test_dict/dict.pkl including predifined random indices"
