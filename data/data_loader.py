@@ -560,8 +560,8 @@ class DataLoader(BaseDataLoader):
         dict_inds = {}
         test_dict = opt.dataroot + "/test_dict/dict.pkl"
         if opt.phase == "test":
-            if os.path.isfile(test_dict, 'r'):
-                with open(test_dict) as f:
+            if os.path.isfile(test_dict):
+                with open(test_dict, 'r') as f:
                     dict_inds = pickle.load(StrToBytes(f))
             else:
                 warnings.warn(
