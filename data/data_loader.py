@@ -25,7 +25,7 @@ class StrToBytes:
     def read(self, size):
         return self.fileobj.read(size).encode('utf-8')
     def readline(self, size=-1):
-        return self.fileobj.readline(size).encode('utf-8'))
+        return self.fileobj.readline(size).encode('utf-8')
 
 
 def normalize_stack(input, val=0.5):
