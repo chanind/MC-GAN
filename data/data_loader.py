@@ -552,7 +552,7 @@ class DataLoader(BaseDataLoader):
         if opt.phase == "test":
             if os.path.isfile(test_dict):
                 with open(test_dict, 'rb') as f:
-                    dict_inds = pickle.load(f)
+                    dict_inds = pickle.load(f, encoding='latin1')
             else:
                 warnings.warn(
                     "Blanks in test data are random. create a pkl file in ~/data_path/test_dict/dict.pkl including predifined random indices"
